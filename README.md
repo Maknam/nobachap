@@ -61,6 +61,12 @@ Browser tests use installed Google Chrome. Build first and leave port 3100 free;
 - Nine-stage order preview, disabled lookup, sample destination and placeholder update timestamp.
 - Defensible benefits, practical FAQs, final CTA, real social logos and clearly labelled future policy placeholders. Testimonials render only verified entries with publication consent; no reviews have been invented.
 
+## Keeping private files out of Git
+
+`.gitignore` excludes local environment files, Cloudflare secret bindings, private keys, credential files, deployment state, browser authentication sessions, logs, reports and local database backups. Application source, dependency lockfiles and public brand assets remain versioned. Only a sanitized `.env.example` is allowed as an environment template; never put real credentials in it.
+
+Ignoring a file does not remove an already tracked file or erase Git history. If a real credential is ever committed, revoke/rotate it and address the repository history separately. Files in `public/` are served to visitors, and `NEXT_PUBLIC_*` values are included in browser code: neither location may contain private credentials, even if a file is ignored by Git. Add production secrets through the deployment provider's secret storage.
+
 ## Current limitations
 
 **Neither form sends or saves data.** Completion means the request is prepared in browser memory, not that NOBACHAP received it or registered a waiting-list entry. Inputs are retained after preparation and disappear on page reload. The form disclosures and completion messages state this clearly. `submitEnquiry` and `submitWaitingList` are independent mock adapters with integration comments and failure handling.
